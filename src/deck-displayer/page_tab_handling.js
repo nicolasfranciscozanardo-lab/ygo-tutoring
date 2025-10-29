@@ -11,7 +11,7 @@ function createTab(name = 'New Diagram') {
   tab.className = 'tab';
   tab.textContent = name;
   
-  tabStates.set(tab, { nodes: [], edges: [] });
+  tabStates.set(tab, []);
 
   tab.addEventListener('dblclick', (e) => {
     tab.dataset.editing = true;

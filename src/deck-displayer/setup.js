@@ -6,7 +6,7 @@ const selectionInfo = document.getElementById('selectionInfo');
 const fileImport = document.getElementById('file-import');
 const btnDownload = document.getElementById('btn-download');
 
-let state = { nodes: [], edges: [] };
+let state = [];
 let idCounter = 1;
 let selected = null;
 let tempPath = null;

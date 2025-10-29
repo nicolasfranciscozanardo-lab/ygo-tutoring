@@ -32,7 +32,7 @@ function createNode(cardid=null){
   const id = 'n'+(idCounter++);
   const el = newHtmlNodeElement(id, cardid);
   
-  state.nodes.push({id, cardid});
+  state.push(cardid);
   return el;
 };
 
@@ -40,6 +40,7 @@ function newHtmlNodeElement(id, cardid) {
   const el = document.createElement('div');
   el.className='node';
   el.dataset.id=id;
+  el.dataset.cardid=cardid;
   
   stage.appendChild(el);
   makeSelectable(el);

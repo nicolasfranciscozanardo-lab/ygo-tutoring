@@ -1,20 +1,25 @@
 function btnDelete_click() {
   if(!selected) 
     return alert('Select a node to delete');
-  const id = selected.dataset.id; // remove edges
-  state.edges = state.edges.filter(e => e.from!==id && e.to!==id);
-  state.nodes = state.nodes.filter(n => n.id!==id);
+  const id = selected.dataset.id;
+  removeFirst(state, parseInt(selected.dataset.cardid));
+
   selected.remove();
   selected=null;
-  selectionInfo.innerText='No selection';
-  scheduleUpdateEdges();
 };
 
 function btnClear_click() {
   if(!confirm('Clear all nodes and edges?'))
     return;
-  state = { nodes: [], edges: [] };
+  state = [];
   while(stage.firstChild)
     stage.removeChild(stage.firstChild); 
-  scheduleUpdateEdges();
 };
+
+function removeFirst(arr, value) {
+  const index = arr.indexOf(value);
+  if (index !== -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}

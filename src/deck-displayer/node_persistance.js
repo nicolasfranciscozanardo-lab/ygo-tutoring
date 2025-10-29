@@ -78,20 +78,11 @@ function loadState(obj) { // simple loader
   while(stage.firstChild)
     stage.removeChild(stage.firstChild);
   
-  if(obj.nodes) {
-    for(const n of obj.nodes) {
-      const el = createNode(n.x||60, n.y||60, n.title||'Node',n.cardid||null); // ensure id preserved
-      const newId = el.dataset.id; // replace with saved id
-      
-      // rename
-      state.nodes[state.nodes.length-1].id = n.id || newId;
-      el.dataset.id = state.nodes[state.nodes.length-1].id;
-      
-      if(n.id && n.id.startsWith('n')) {
-        const num = parseInt(n.id.replace(/^n/,''));
-        if(!isNaN(num) && num >= idCounter) idCounter = num+1;
-      }
+  if(obj) {
+    for(const n of obj) {
+      const el = newNode(n); // ensure id preserved
     }
+    idCounter = obj.length + 1;
   }
 };
 
@@ -102,14 +93,8 @@ function loadStateReference(obj) {
   while(stage.firstChild)
     stage.removeChild(stage.firstChild);
   
-  for(const n of obj.nodes) {
-    const el = newHtmlNodeElement(n.id, n.x, n.y, n.title,n.cardid||null);
-    el.dataset.id = n.id;
-    
-    if(n.id && n.id.startsWith('n')) {
-      const num = parseInt(n.id.replace(/^n/,''));
-      if(!isNaN(num) && num >= idCounter) idCounter = num+1;
-    }
+  for(const n of obj) {
+    const el = newHtmlNodeElement(idCounter++,n||null);
   }
 }
 

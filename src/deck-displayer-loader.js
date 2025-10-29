@@ -6,7 +6,6 @@ const ScriptLibrary = {
     '../src/deck-displayer/node_persistance.js',
     '../src/deck-displayer/node_selection.js',
     '../src/deck-displayer/events.js',
-    '../src/deck-displayer/node_global_dragging.js',
     '../src/deck-displayer/node_image_handler.js',
     '../src/deck-displayer/page_tab_handling.js',
     '../src/deck-displayer/initialize.js',
